@@ -14,6 +14,8 @@ class FetchAllNewsUseCase extends UseCase<List<NewsEntity>, int> {
 
   @override
   Future<Either<Failure, List<NewsEntity>>> fetchAllNews() async {
+
+    //permission
     return await homeRepo.fetchAllNews();
   }
 }

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:news_app_with_cleanarch/core/utils/styles.dart';
 import 'package:news_app_with_cleanarch/features/home/presentation/view/widgets/NewsListView.dart';
 import 'package:news_app_with_cleanarch/features/home/presentation/view/widgets/custom_news_item.dart';
+import 'package:news_app_with_cleanarch/features/home/presentation/view/widgets/news_listview_bloc_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -41,9 +42,10 @@ class HomeViewBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const Expanded(child: NewsListView()),
+          const Expanded(child: NewsListViewBlocBuilder()),
         ],
       ),
     );
   }
 }
+
