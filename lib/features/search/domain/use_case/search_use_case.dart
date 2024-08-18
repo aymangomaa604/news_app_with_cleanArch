@@ -14,7 +14,7 @@ class SearchNewsUseCase extends UseCase<List<SearchNewsEntity>, String> {
 
   @override
   Future<Either<Failure, List<SearchNewsEntity>>> fetchSearchNews(
-      [String? param]) {
-    return searchRepo.fetchSearchNews(category: param!);
+      [String? param ]) async{
+    return await searchRepo.fetchSearchNews(category: param!);
   }
 }

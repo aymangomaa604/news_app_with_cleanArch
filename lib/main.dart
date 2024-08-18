@@ -10,10 +10,14 @@ import 'package:news_app_with_cleanarch/features/home/data/repos/home_repo_imp.d
 import 'package:news_app_with_cleanarch/features/home/domain/entity/news_entity.dart';
 import 'package:news_app_with_cleanarch/features/home/domain/use_case/home_use_case.dart';
 import 'package:news_app_with_cleanarch/features/home/presentation/view_model/cubit/all_news_cubit.dart';
+import 'package:news_app_with_cleanarch/features/search/domain/entity/search_news_entity.dart';
 
 void main() async {
   await Hive.initFlutter();
+   Hive.registerAdapter(SearchNewsEntityAdapter());
    Hive.registerAdapter(NewsEntityAdapter());
+     await Hive.openBox<SearchNewsEntity>(kSearchNews);
+
   await Hive.openBox<NewsEntity>(kAllNews);
   runApp(const NewsApp());
 }
