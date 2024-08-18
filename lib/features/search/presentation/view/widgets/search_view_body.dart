@@ -9,14 +9,18 @@ import 'package:news_app_with_cleanarch/features/search/presentation/view_model/
 class SearchViewBody extends StatelessWidget {
   SearchViewBody({super.key});
   String? value;
+  TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomTextField(
+          textEditingController: textEditingController,
           onSubmitted: (p0) {
             value = p0;
-            BlocProvider.of<SearchNewsCubit>(context).getSearchNews(category: value!);
+            BlocProvider.of<SearchNewsCubit>(context)
+                .getSearchNews(category: value!);
+            textEditingController.clear();
           },
         ),
         Expanded(

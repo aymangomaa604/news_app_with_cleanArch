@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hash_cached_image/hash_cached_image.dart';
 import 'package:news_app_with_cleanarch/core/utils/styles.dart';
 import 'package:news_app_with_cleanarch/features/home/domain/entity/news_entity.dart';
 
@@ -11,8 +12,16 @@ class CustomNewsItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 15),
       child: Column(
         children: [
-          Image.network(newsEntity.image,
-              fit: BoxFit.fill, height: 200, width: double.infinity),
+           HashCachedImage(
+            imageUrl: newsEntity.image,
+            height: 200,
+            width: double.infinity,
+            placeholder: (context) =>
+                Center(child: const CircularProgressIndicator()),
+            errorWidget: (context, error, stackTrace) =>
+                const Icon(Icons.error),
+            fit: BoxFit.cover,
+          ),
            Text(
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
